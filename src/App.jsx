@@ -447,6 +447,9 @@ function PrepScreen({ players, onDone }) {
     cats.forEach(function (cat) {
       if (CATEGORY_LIBRARY[cat]) {
         initial[cat] = CATEGORY_LIBRARY[cat].map(function (c) {
+          if (c.type === "image") {
+            return { id: uid(), src: c.src, answer: c.answer, type: "image" };
+          }
           return { id: uid(), clue: c.clue, answer: c.answer, type: "text" };
         });
       }
